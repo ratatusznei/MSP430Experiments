@@ -1,0 +1,6 @@
+target remote localhost:55000
+
+load
+break *main
+continue
+step
