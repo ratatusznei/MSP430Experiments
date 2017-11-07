@@ -67,7 +67,7 @@ char Samba_debounceLOW (char pin) {
 }
 
 char Samba_getchar () {
-	while (MatrixIN & READ_KEYS != 0) {
+	while ((MatrixIN & READ_KEYS) == READ_KEYS) {
 		// Wait button press
 	}
 
