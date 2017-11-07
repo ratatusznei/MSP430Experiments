@@ -26,7 +26,7 @@
 
 #endif // SAMBA_USE_PORT1
 
-#define DEBOUNCE_DELAY 124
+#define DEBOUNCE_DELAY 64
 
 enum MatrixPins {
 	Keys1470 = BIT0,

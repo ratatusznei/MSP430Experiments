@@ -30,7 +30,7 @@ void blink (char n) {
 void __interrupt_vec(PORT2_VECTOR) MatrixInterrupt () {
 	char smb = Samba_getc();
 
-	if (smb >= '0' && smb <= '9') {
+	if (smb >= '1' && smb <= '9') {
 		blink(smb - '0');
 	}
 	else if (smb == 'C') {
@@ -38,6 +38,9 @@ void __interrupt_vec(PORT2_VECTOR) MatrixInterrupt () {
 	}
 	else if (smb == 'E') {
 		P1OUT |= BIT0;
+	}
+	else if (smb == '0') {
+		P1OUT ^= BIT0;
 	}
 
 	MatrixIFG = 0;
