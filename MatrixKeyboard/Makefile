@@ -1,4 +1,4 @@
-OBJECTS=blink.o
+OBJECTS=main.o SambaTopKeys.o
 
 GCC_DIR = C:\ti\msp430_gcc
 GCC_BIN_DIR =  $(GCC_DIR)\bin
@@ -10,6 +10,7 @@ DEVICE_DATA = $(GCC_DIR)/msp430.dat
 CC      = $(GCC_BIN_DIR)/msp430-elf-gcc
 GDB     = $(GCC_BIN_DIR)/msp430-elf-gdb
 GDB_AGENT = $(GCC_BIN_DIR)/gdb_agent_gui
+GDB_SCRITPS = gdb
 
 
 CFLAGS = -I $(SUPPORT_FILE_DIRECTORY) -mmcu=$(DEVICE) -O2 -g
@@ -18,10 +19,17 @@ LFLAGS = -L $(SUPPORT_FILE_DIRECTORY)
 all: ${OBJECTS}
 	$(CC) $(CFLAGS) $(LFLAGS) $? -o $(DEVICE).out
 
+load: all
+	CMD /C start $(GDB_AGENT) $(DEVICE_DATA)
+	$(GDB) $(DEVICE).out -x $(GDB_SCRITPS)/load
+
 debug: all
 	CMD /C start $(GDB_AGENT) $(DEVICE_DATA)
-	$(GDB) $(DEVICE).out -x gdbinit
+	$(GDB) $(DEVICE).out -x $(GDB_SCRITPS)/debug
 
-clear:
+attach: all
+	$(GDB) $(DEVICE).out -x $(GDB_SCRITPS)/debug
+
+clean:
 	del $(DEVICE).out
 	del $(OBJECTS)

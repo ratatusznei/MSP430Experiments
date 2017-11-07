@@ -7,7 +7,8 @@ int main() {
 	WDTCTL = WDTPW | WDTHOLD;
 
 	// Timer com o clock externo, com interrupção, modo continuo
-	TA0CTL = TASSEL_1 | TAIE | MC_2;
+	TA0CTL = TASSEL_1 | TAIE | MC_1;
+	TACCR0 = 0xF0;
 
 	P1DIR = BIT6 | BIT0;
 	P1OUT = BIT0;

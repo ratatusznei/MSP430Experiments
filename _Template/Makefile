@@ -9,7 +9,7 @@ DEVICE_DATA = $(GCC_DIR)/msp430.dat
 
 CC      = $(GCC_BIN_DIR)/msp430-elf-gcc
 GDB     = $(GCC_BIN_DIR)/msp430-elf-gdb
-GDB_AGENT = $(GCC_BIN_DIR)/gdb_agent_console
+GDB_AGENT = $(GCC_BIN_DIR)/gdb_agent_gui
 GDB_SCRITPS = gdb
 
 
