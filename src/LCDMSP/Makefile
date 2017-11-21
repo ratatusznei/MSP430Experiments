@@ -1,4 +1,7 @@
-OBJECTS=MSPLCD.o Hitachi.o
+OBJECTS=MSPLCD.o
+
+LIBS_DIR = ../../lib
+LIBS = $(LIBS_DIR)/Hitachi/Hitachi.c
 
 GCC_DIR = C:\ti\msp430_gcc
 GCC_BIN_DIR =  $(GCC_DIR)\bin
@@ -16,8 +19,7 @@ CFLAGS = -I $(SUPPORT_FILE_DIRECTORY) -mmcu=$(DEVICE) -O2 -g
 LFLAGS = -L $(SUPPORT_FILE_DIRECTORY)
 
 all: ${OBJECTS}
-	cls
-	$(CC) $(CFLAGS) $(LFLAGS) $? -o $(DEVICE).out
+	$(CC) $(CFLAGS) $(LFLAGS) $(LIBS) $? -o $(DEVICE).out
 
 debug: all
 	CMD /C start $(GDB_AGENT) $(DEVICE_DATA)
@@ -27,5 +29,5 @@ attach: all
 	$(GDB) $(DEVICE).out -x gdbinit
 
 clean:
-	del $(DEVICE).out
-	del $(OBJECTS)
+	rm $(DEVICE).out
+	rm $(OBJECTS)

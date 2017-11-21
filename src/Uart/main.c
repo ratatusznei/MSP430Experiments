@@ -1,6 +1,6 @@
 #include "msp430.h"
 #include <stdarg.h> // for variadic functions
-#include "SambaTopKeys.h"
+#include "../../lib/SambaTopKeys/SambaTopKeys.h"
 
 #define Uart_isBusy() (UCA0STAT & UCBUSY)
 

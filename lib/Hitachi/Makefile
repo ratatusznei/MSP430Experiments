@@ -1,11 +1,8 @@
-OBJECTS=main.o
-
-LIBS_DIR = ../../lib
-LIBS = $(LIBS_DIR)/SambaTopKeys/SambaTopKeys.c
+OBJECTS=Hitachi.o
 
 GCC_DIR = C:\ti\msp430_gcc
-GCC_BIN_DIR =  $(GCC_DIR)\bin
-SUPPORT_FILE_DIRECTORY = $(GCC_DIR)\include
+GCC_BIN_DIR =  $(GCC_DIR)/bin
+SUPPORT_FILE_DIRECTORY = $(GCC_DIR)/include
 
 DEVICE  = msp430g2553
 DEVICE_DATA = $(GCC_DIR)/msp430.dat
@@ -20,7 +17,10 @@ CFLAGS = -I $(SUPPORT_FILE_DIRECTORY) -mmcu=$(DEVICE) -O2 -g
 LFLAGS = -L $(SUPPORT_FILE_DIRECTORY)
 
 all: ${OBJECTS}
-	$(CC) $(CFLAGS) $(LFLAGS) $(LIBS) $? -o $(DEVICE).out
+	$(CC) $(CFLAGS) $(LFLAGS) $? -o $(DEVICE).out
+
+preprocessor: ${OBJECTS}
+	$(CC) -c $?
 
 load: all
 	CMD /C start $(GDB_AGENT) $(DEVICE_DATA)

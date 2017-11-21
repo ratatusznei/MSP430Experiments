@@ -1,7 +1,7 @@
 #include "msp430.h"
 
 #include <stdlib.h> // for rand
-#include "Hitachi.h"
+#include "../../lib/Hitachi/Hitachi.h"
 
 void ConfigureAdc () {
 	ADC10CTL1 = INCH_3;

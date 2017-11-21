@@ -1,5 +1,5 @@
 #include "msp430.h"
-#include "SambaTopKeys.h"
+#include "../../lib/SambaTopKeys/SambaTopKeys.h"
 
 #define __interrupt_vec(vec) __attribute__((interrupt(vec)))
 

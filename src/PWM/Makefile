@@ -1,4 +1,7 @@
-OBJECTS=pwm.o
+OBJECTS = pwm.o
+
+LIBS_DIR = ../../lib
+LIBS = $(LIBS_DIR)/none.c
 
 GCC_DIR = C:\ti\msp430_gcc
 GCC_BIN_DIR =  $(GCC_DIR)\bin
@@ -16,13 +19,15 @@ CFLAGS = -I $(SUPPORT_FILE_DIRECTORY) -mmcu=$(DEVICE) -O2 -g
 LFLAGS = -L $(SUPPORT_FILE_DIRECTORY)
 
 all: ${OBJECTS}
-	cls
-	$(CC) $(CFLAGS) $(LFLAGS) $? -o $(DEVICE).out
+	$(CC) $(CFLAGS) $(LFLAGS) $(LIBS) $? -o $(DEVICE).out
 
 debug: all
 	CMD /C start $(GDB_AGENT) $(DEVICE_DATA)
 	$(GDB) $(DEVICE).out -x gdbinit
 
-clear:
-	del $(DEVICE).out
-	del $(OBJECTS)
+attach: all
+	$(GDB) $(DEVICE).out -x gdbinit
+
+clean:
+	rm $(DEVICE).out
+	rm $(OBJECTS)
