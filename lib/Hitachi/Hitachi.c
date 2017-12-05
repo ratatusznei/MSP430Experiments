@@ -75,8 +75,8 @@ void LCD_printf(const char *format, ...) {
 /*
 	x ->
 y	+----------------+
-|	|00...         0F|
-V	|01...         1F|
+|	|00...         F0|
+V	|01...         F1|
 	+----------------+
 */
 void LCD_goto(char x, char y) {
@@ -132,6 +132,8 @@ void LCD_init (int doBlink) {
 	
 	LCD_DIR = 0xFF;
 	LCD_BUS = 0x00;
+	LCD_SEL = 0x00;
+	LCD_SEL2 = 0x00;
 	
 	// UM TRES
 	LCD_put4(0x3);

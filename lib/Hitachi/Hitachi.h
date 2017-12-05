@@ -1,8 +1,17 @@
 #include "msp430.h"
 #include <stdarg.h> // for variadic functions
 
+#ifdef USE_PORT2
+#define LCD_BUS P2OUT
+#define LCD_DIR P2DIR
+#define LCD_SEL P2SEL
+#define LCD_SEL2 P2SEL2
+#else
 #define LCD_BUS P1OUT
 #define LCD_DIR P1DIR
+#define LCD_SEL P1SEL
+#define LCD_SEL2 P1SEL2
+#endif // USE_PORT2
 
 #define RS	BIT0
 #define RW  BIT1
