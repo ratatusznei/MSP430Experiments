@@ -4,6 +4,37 @@
 #include "msp430.h"
 #include <stdarg.h>
 
+/*
+	Baudrate callibration consts at 1 MHz
+*/
+#define CALBRR_9600 104
+#define CALBRS_9600 1
+#define CALBRF_9600 0
+
+#define CALBRR_19200 52
+#define CALBRS_19200 0
+#define CALBRF_19200 0
+
+#define CALBRR_38400 26
+#define CALBRS_38400 0
+#define CALBRF_38400 0
+
+#define CALBRR_56000 17
+#define CALBRS_56000 7
+#define CALBRF_56000 0
+
+#define CALBRR_115200 8
+#define CALBRS_115200 6
+#define CALBRF_115200 0
+
+#define CALBRR_128000 7
+#define CALBRS_128000 7
+#define CALBRF_128000 0
+
+#define CALBRR_256000 3
+#define CALBRS_256000 7
+#define CALBRF_256000 0
+
 /* 
 	Initializes the uart:
 		- 8 data bits
