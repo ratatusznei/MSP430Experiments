@@ -1,2 +1,9 @@
 # MSP430Experiments
-MSP430 examples
+
+## Pasta lib
+
+Esta pasta tem bibliotecas
+
+## Pasta src
+
+Esta pasta tem exemplos de códigos fontes, utilizando e não utilizando a biblioteca
