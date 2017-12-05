@@ -1,3 +1,6 @@
+#ifndef SAMBATOPKEYS_H
+#define SAMBATOPKEYS_H
+
 #include "msp430.h"
 
 #ifdef SAMBA_USE_PORT2
@@ -60,3 +63,5 @@ char Samba_debounceLOW (char pin);
 // Reads a char from the key pad
 #define Samba_getc() Samba_getchar()
 char Samba_getchar ();
+
+#endif // SAMBATOPKEYS_H

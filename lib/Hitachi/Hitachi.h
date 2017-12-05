@@ -1,3 +1,6 @@
+#ifndef HITACHI_H
+#define HITACHI_H
+
 #include "msp430.h"
 #include <stdarg.h> // for variadic functions
 
@@ -77,3 +80,5 @@ void LCD_progressBar (char size, char filled);
 
 // Configura os pinos e inicializa o display
 void LCD_init (int doBlink);
+
+#endif // HITACHI_H

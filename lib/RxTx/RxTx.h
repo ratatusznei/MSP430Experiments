@@ -1,3 +1,6 @@
+#ifndef RXTX_H
+#define RXTX_H
+
 #include "msp430.h"
 #include <stdarg.h>
 
@@ -28,3 +31,4 @@ void RxTx_puts (char *str);
 // Sends a formatted string via the uart
 void RxTx_printf (char *format, ...);
 
+#endif // RXTX_H
