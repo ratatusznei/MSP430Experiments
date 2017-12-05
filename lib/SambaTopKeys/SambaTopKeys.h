@@ -1,6 +1,6 @@
 #include "msp430.h"
 
-#ifndef SAMBA_USE_PORT1
+#ifdef SAMBA_USE_PORT2
 
 #define MatrixDIR P2DIR
 #define MatrixOUT P2OUT
@@ -24,7 +24,7 @@
 #define MatrixSEL P1SEL
 #define MatrixSEL2 P1SEL2
 
-#endif // SAMBA_USE_PORT1
+#endif // SAMBA_USE_PORT2
 
 #define DEBOUNCE_DELAY 64
 
