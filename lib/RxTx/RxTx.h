@@ -14,7 +14,6 @@
 */
 void RxTx_init (int brr, int brf, int brs);
 
-
 // Wait a char to be available and return it
 #define RxTx_getc() RxTx_getchar()
 char RxTx_getchar ();

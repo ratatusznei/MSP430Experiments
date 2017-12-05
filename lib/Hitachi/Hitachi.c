@@ -1,6 +1,5 @@
 #include "Hitachi.h"
 
-//Envia 4 bits para o bus de dados do display, é a função de nível mais baixo
 void LCD_put4 (char data) {
   	__delay_cycles(110);
 	
@@ -26,7 +25,6 @@ void LCD_put4 (char data) {
 	LCD_CLOCK();
 }
 
-// Envia um comando de 8 bits, atraves de dois de 4 bits
 void LCD_cmd (char cmd) {
 	CBI(LCD_BUS, RS);
   
@@ -34,7 +32,6 @@ void LCD_cmd (char cmd) {
 	LCD_put4(cmd);
 }
 
-// Envia um char de dados
 #define LCD_putc(data) LCD_data(data)
 #define LCD_putchar(data) LCD_data(data)
 void LCD_data (char data) {
@@ -44,7 +41,6 @@ void LCD_data (char data) {
 	LCD_put4(data);
 }
 
-// Envia uma string
 #define LCD_puts(data) LCD_string(data)
 void LCD_string (char *data) {
 	while (*data) {
@@ -52,8 +48,6 @@ void LCD_string (char *data) {
 	}
 }
 
-// Funcao equivalente a printf
-// Obs.: O que acontece aqui fica aqui
 void LCD_printf(const char *format, ...) {
 	// Maximo de 80 chars no display controlado pelo hitachi
 	char str[81];
@@ -70,15 +64,6 @@ void LCD_printf(const char *format, ...) {
 	LCD_puts(str);
 }
 
-
-// Move o cursor para uma posição no display
-/*
-	x ->
-y	+----------------+
-|	|00...         F0|
-V	|01...         F1|
-	+----------------+
-*/
 void LCD_goto(char x, char y) {
 	char cmd = 0x80;
 	
@@ -100,8 +85,6 @@ void LCD_makeChar (char bitmap[8], char code) {
 	}
 }
 
-// Displays a progress bar in the cursor position, 0x00 <= filled <= 0xFF
-// Ex: [------      ]
 void LCD_progressBar (char size, char filled) {
 	LCD_putc('[');
 	char i = 0;
@@ -125,7 +108,6 @@ void LCD_progressBar (char size, char filled) {
 	LCD_putc(']');
 }
 
-// Inicializa o display
 void LCD_init (int doBlink) { 
 	// 15 ms
 	__delay_cycles(15000);
