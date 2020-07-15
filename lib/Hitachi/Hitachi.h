@@ -2,6 +2,7 @@
 #define HITACHI_H
 
 #include "msp430.h"
+#include <stdio.h>  // for vsprintf function (it was gerating a implicit function warning)
 #include <stdarg.h> // for variadic functions
 
 #ifdef HITACHI_USE_PORT2
@@ -21,7 +22,7 @@
 #endif // HITACHI_USE_PORT2
 
 #define RS	BIT0
-#define RW  BIT1
+#define RW	BIT1
 #define E	BIT2
 
 #define DB4 BIT4
